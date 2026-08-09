@@ -4,7 +4,7 @@
 
 The plugin currently is not complete!
 
-Several features are inspired or even taken from [Qking12](https://github.com/qKing12)'s [RoyaleEconomy](https://voxel.shop/product/113/royaleeconomy-open-sourced)
+Several features are inspired from [Qking12](https://github.com/qKing12)'s [RoyaleEconomy](https://voxel.shop/product/113/royaleeconomy-open-sourced), and [DrDonut's DonutSMP](https://store.donutsmp.net/)
 
 Feature TODO list:
 - [ ] Banking System
