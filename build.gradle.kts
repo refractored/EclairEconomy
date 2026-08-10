@@ -56,6 +56,7 @@ gversion {
 buildConfig {
     className("Libraries")
     useJavaOutput()
+    packageName("$group.eclairEconomy")
 
     buildConfigField("DEPENDS", externalDepends)
 }
