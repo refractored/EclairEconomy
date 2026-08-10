@@ -24,7 +24,7 @@ class EclairEconomy : SuspendingJavaPlugin() {
         val startupTime = TimeSource.Monotonic.markNow()
         reload()
         componentLogger.info(
-            Component.text("EclairEconomy has been enabled in ${startupTime.elapsedNow().inWholeMilliseconds}ms", NamedTextColor.GREEN),
+            Component.text("Enabled in ${startupTime.elapsedNow().inWholeMilliseconds}ms", NamedTextColor.GREEN),
         )
     }
 
