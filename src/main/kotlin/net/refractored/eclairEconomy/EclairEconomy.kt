@@ -7,6 +7,12 @@ import java.io.File
 import java.nio.file.Files
 
 class EclairEconomy : SuspendingJavaPlugin() {
+    lateinit var config: CommentedConfigurationNode
+        private set
+
+    lateinit var messages: CommentedConfigurationNode
+        private set
+
     init {
         instance = this
     }
@@ -22,7 +28,8 @@ class EclairEconomy : SuspendingJavaPlugin() {
     fun reload() {
         dataFolder.mkdirs()
 
-        loadConfig("config.yml")
+        config = loadConfig("config.yml")
+        messages = loadConfig("messages.yml")
     }
 
     private fun loadConfig(file: String): CommentedConfigurationNode {
