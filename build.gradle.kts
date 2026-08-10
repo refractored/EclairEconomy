@@ -1,3 +1,4 @@
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.kotlin.dsl.buildConfigField
 
 plugins {
@@ -23,10 +24,11 @@ repositories {
 dependencies {
     compileOnly(libs.paper.api)
 
-    implementation(libs.kotlin)
-    implementation(libs.kotlin.coroutines)
-    implementation(libs.bundles.mccoroutine)
-    implementation(libs.bundles.configurate)
+    // External dependencies downloaded at runtime
+    libLoader(libs.kotlin)
+    libLoader(libs.kotlin.coroutines)
+    libLoader(libs.bundles.mccoroutine)
+    libLoader(libs.bundles.configurate)
 }
 
 paperPluginYaml {
@@ -66,4 +68,53 @@ tasks {
         minecraftVersion(libs.versions.minecraft.get())
         jvmArgs("-Xms2G", "-Xmx2G", "-Dcom.mojang.eula.agree=true")
     }
+
+    compileKotlin {
+        dependsOn(createVersionFile)
+    }
 }
+
+/**
+ * Adds a dependency as [compileOnly] and sets up for paper's library loader to download the dependency at runtime.
+ * Providers that resolve to either [MinimalExternalModuleDependency] or [ExternalModuleDependencyBundle] are supported, as well as Strings and the Kotlin library accessors.
+ *
+ * @return The dependency.
+ *
+ * @throws IllegalArgumentException If the dependency is unsupported.
+ */
+fun DependencyHandler.libLoader(dep: Any?): Dependency? =
+    when (dep) {
+        is String -> {
+            externalDepends.add(dep)
+            compileOnly(dep)
+        }
+
+        is LibrariesForLibs.KotlinLibraryAccessors -> {
+            externalDepends.add(dep.asProvider().get().toString())
+            compileOnly(dep)
+        }
+
+        is Provider<*> -> {
+            when (val resolved = dep.get()) {
+                is MinimalExternalModuleDependency -> {
+                    externalDepends.add(resolved.toString())
+                    compileOnly(dep)
+                }
+
+                is ExternalModuleDependencyBundle -> {
+                    resolved.forEach { bundledDep ->
+                        externalDepends.add(bundledDep.toString())
+                    }
+                    compileOnly(dep)
+                }
+
+                else -> {
+                    throw IllegalArgumentException("Unsupported Provider: ${resolved::class.java.name}")
+                }
+            }
+        }
+
+        else -> {
+            throw IllegalArgumentException("Unsupported dependency: $dep")
+        }
+    }
