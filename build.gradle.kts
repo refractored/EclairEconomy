@@ -29,13 +29,14 @@ dependencies {
     libLoader(libs.kotlin.coroutines)
     libLoader(libs.bundles.mccoroutine)
     libLoader(libs.bundles.configurate)
+    libLoader(libs.bundles.lamp.bukkit)
 }
 
 paperPluginYaml {
     main = "$group.eclairEconomy.EclairEconomy"
     loader = "$group.eclairEconomy.EclairEconomyLoader"
     foliaSupported = true // Probably would need more testing.
-    apiVersion = "26.2"
+    apiVersion = "${libs.versions.minecraft.get()}"
     version = "$version"
 
     authors = listOf("refractored")
