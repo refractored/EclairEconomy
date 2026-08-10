@@ -37,7 +37,7 @@ paperPluginYaml {
     loader = "$group.eclairEconomy.EclairEconomyLoader"
     foliaSupported = true // Probably would need more testing.
     apiVersion = "${libs.versions.minecraft.get()}"
-    version = "$version"
+    version = "${version.get()}"
 
     authors = listOf("refractored")
     contributors = listOf()
