@@ -1,10 +1,13 @@
 package net.refractored.eclairEconomy
 
 import com.github.shynixn.mccoroutine.folia.SuspendingJavaPlugin
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.NamedTextColor
 import org.spongepowered.configurate.CommentedConfigurationNode
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 import java.io.File
 import java.nio.file.Files
+import kotlin.time.TimeSource
 
 class EclairEconomy : SuspendingJavaPlugin() {
     lateinit var config: CommentedConfigurationNode
@@ -18,7 +21,11 @@ class EclairEconomy : SuspendingJavaPlugin() {
     }
 
     override fun onEnable() {
+        val startupTime = TimeSource.Monotonic.markNow()
         reload()
+        componentLogger.info(
+            Component.text("EclairEconomy has been enabled in ${startupTime.elapsedNow().inWholeMilliseconds}ms", NamedTextColor.GREEN),
+        )
     }
 
     override fun onDisable() {
