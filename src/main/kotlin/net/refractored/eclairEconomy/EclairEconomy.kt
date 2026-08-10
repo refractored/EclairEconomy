@@ -1,8 +1,8 @@
 package net.refractored.eclairEconomy
 
-import org.bukkit.plugin.java.JavaPlugin
+import com.github.shynixn.mccoroutine.folia.SuspendingJavaPlugin
 
-class EclairEconomy : JavaPlugin() {
+class EclairEconomy : SuspendingJavaPlugin() {
     override fun onEnable() {
         // Plugin startup logic
     }

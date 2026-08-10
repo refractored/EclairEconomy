@@ -13,16 +13,21 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper.api)
-    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin)
+    implementation(libs.kotlin.coroutines)
+    implementation(libs.bundles.mccoroutine)
 }
 
 paperPluginYaml {
     main = "net.refractored.eclairEconomy.EclairEconomy"
     loader = "net.refractored.eclairEconomy.EclairEconomyLoader"
+    foliaSupported = true // Probably would need more testing.
     apiVersion = "26.2"
 
     authors = listOf("refractored")
-    website = "net.refractored"
+    contributors = listOf()
+
+    website = "https://github.com/refractored/EclairEconomy"
 }
 
 kotlin {
