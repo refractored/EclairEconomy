@@ -12,6 +12,10 @@ plugin-yaml-creator = "1.3.1"
 buildconfig = "6.0.10"
 configurate = "4.2.0"
 lamp = "4.0.0-rc.18"
+exposed = "1.3.0"
+r2dbc-h2 = "1.1.0.RELEASE"
+r2dbc-mariadb = "1.4.1"
+r2dbc-mysql = "1.4.3"
 
 [libraries]
 paper-api = { module = "io.papermc.paper:paper-api", version.ref = "paper-api" }
@@ -25,7 +29,13 @@ lamp-brigadier  = { group = "io.github.revxrsal", name = "lamp.brigadier", versi
 configurate-core  = { group = "org.spongepowered", name = "configurate-core", version.ref = "configurate" }
 configurate-yaml  = { group = "org.spongepowered", name = "configurate-yaml", version.ref = "configurate" }
 configurate-extra-kotlin  = { group = "org.spongepowered", name = "configurate-extra-kotlin", version.ref = "configurate" }
-
+# Database
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-r2dbc = { module = "org.jetbrains.exposed:exposed-r2dbc", version.ref = "exposed" }
+exposed-migration-r2dbc = { module = "org.jetbrains.exposed:exposed-migration-r2dbc", version.ref = "exposed" }
+r2dbc-h2 = { module = "io.r2dbc:r2dbc-h2", version.ref = "r2dbc-h2" }
+r2dbc-mariadb = { module = "org.mariadb:r2dbc-mariadb", version.ref = "r2dbc-mariadb" }
+r2dbc-mysql = { module = "io.asyncer:r2dbc-mysql", version.ref = "r2dbc-mysql" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -38,3 +48,5 @@ paper-run = { id = "xyz.jpenilla.run-paper", version.ref = "paper-run" }
 mccoroutine = ["mccoroutine-folia-api", "mccoroutine-folia-core"]
 configurate = ["configurate-core", "configurate-yaml", "configurate-extra-kotlin"]
 lamp-bukkit = ["lamp-common", "lamp-bukkit", "lamp-brigadier"]
+exposed = ["exposed-core", "exposed-r2dbc", "exposed-migration-r2dbc"]
+r2dbc-drivers = ["r2dbc-h2", "r2dbc-mariadb", "r2dbc-mysql"]

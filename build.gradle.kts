@@ -30,6 +30,8 @@ dependencies {
     libLoader(libs.bundles.mccoroutine)
     libLoader(libs.bundles.configurate)
     libLoader(libs.bundles.lamp.bukkit)
+    libLoader(libs.bundles.exposed)
+    libLoader(libs.bundles.r2dbc.drivers)
 }
 
 paperPluginYaml {

@@ -1,1 +1,41 @@
-# TODO
+storage:
+  # Available drivers:
+  # "MySQL"
+  # "MariaDB" (Preferred over mysql)
+  driver: MariaDB
+
+  address: "172.18.0.1"
+
+  database: "economy"
+
+  username: "username"
+  password: "Password64!"
+
+  # If SQL statements should be logged to the console.
+  verbose: false
+
+  # The default settings are suitable for most use cases.
+  # Unless you know what you're doing, it's recommended to leave these settings as they are.
+  pool-settings:
+    maximum-pool-size: 10
+
+    minimum-idle: 10
+
+    maximum-lifetime: 450000
+
+    keepalive-time: 0
+
+    connection-timeout: 5000
+
+    properties:
+      useUnicode: true
+      characterEncoding: utf8
+      useSSL: false
+      verifyServerCertificate: false
+
+  cache:
+    # Available cache methods:
+    # Memory (Recommended for single server setups)
+    # Redis (Recommended for multiserver setups)
+    # PluginMessaging
+    method: Memory

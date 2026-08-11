@@ -35,6 +35,9 @@ class EclairEconomy : SuspendingJavaPlugin() {
     lateinit var messages: CommentedConfigurationNode
         private set
 
+    lateinit var database: R2dbcDatabase
+        private set
+
     init {
         instance = this
     }
@@ -69,6 +72,29 @@ class EclairEconomy : SuspendingJavaPlugin() {
 
         config = loadConfig("config.yml")
         messages = loadConfig("messages.yml")
+        logger.info("Configuration loaded.")
+
+//        withContext(Dispatchers.IO) {
+//            database =
+//                R2dbcDatabase.connect(
+//                    config
+//                        .node("database", "url")
+//                        .stringOrPath,
+//                    user =
+//                        config
+//                            .node("database", "user")
+//                            .stringOrPath,
+//                    password =
+//                        config
+//                            .node("database", "password")
+//                            .stringOrPath,
+//                )
+//
+//            loggedTransaction {
+// //                SchemaUtils.create(TODO())
+//            }
+//            logger.info("Database connected.")
+//        }
     }
 
     private fun loadConfig(file: String): CommentedConfigurationNode {
@@ -97,6 +123,28 @@ class EclairEconomy : SuspendingJavaPlugin() {
     override fun getConfig(): FileConfiguration = throw UnsupportedOperationException("Config is not a FileConfiguration.")
 
     companion object {
+        suspend fun <T> loggedTransaction(
+            db: R2dbcDatabase? = null,
+            transactionIsolation: IsolationLevel? = db?.transactionManager?.defaultIsolationLevel,
+            readOnly: Boolean? = db?.transactionManager?.defaultReadOnly,
+            statement: suspend Transaction.() -> T,
+        ): T =
+            suspendTransaction(db, transactionIsolation, readOnly) {
+                if (instance.config.node("database", "verbose").boolean) {
+                    addLogger(
+                        object : SqlLogger {
+                            override fun log(
+                                context: StatementContext,
+                                transaction: Transaction,
+                            ) {
+                                instance.logger.info("SQL: ${context.expandArgs(transaction)}")
+                            }
+                        },
+                    )
+                }
+                statement()
+            }
+
         /**
          * The plugin's instance
          */
