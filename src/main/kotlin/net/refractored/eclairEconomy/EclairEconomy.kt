@@ -50,12 +50,23 @@ class EclairEconomy : SuspendingJavaPlugin() {
         reload()
 
         if (server.pluginManager.getPlugin("Vault") != null) {
-            server.servicesManager.register(
-                AsyncEconomy::class.java,
-                TODO(),
-                this,
-                ServicePriority.Highest,
-            )
+            try {
+                Class.forName("net.milkbowl.vault2.economy.Economy")
+                // TODO: Look more into how the new vault API handles old compat
+                server.servicesManager.register(
+                    Economy::class.java,
+                    TODO(),
+                    this,
+                    ServicePriority.High,
+                )
+            } catch (e: ClassNotFoundException) {
+                server.servicesManager.register(
+                    net.milkbowl.vault.economy.Economy::class.java,
+                    TODO(),
+                    this,
+                    ServicePriority.High,
+                )
+            }
         }
 
         lamp =
