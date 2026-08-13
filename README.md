@@ -5,7 +5,21 @@ The plugin currently is incomplete. The plugin will be sold on [BuiltByBit](http
 
 Several features are inspired from [Qking12's](https://github.com/qKing12) [RoyaleEconomy](https://voxel.shop/product/113/royaleeconomy-open-sourced), and [DrDonut's DonutSMP](https://store.donutsmp.net/)
 
-# Feature list:
+# Requirements
+- A supported external database
+  - MySQL
+  - MariaDB (Preferred over mysql)
+- A supported database cache
+  - In-Memory (Fastest for vault-compat, unfortunately does not support more than one server)
+  - Redis (Requires a external Redis server)
+  - PluginMessaging (Requires BungeeCord or Velocity proxy, with the companion plugin installed)
+
+# Supported Plugins
+- [Vault](https://www.spigotmc.org/resources/vault.34315/) (Not Recommended)
+- [VaultUnlocked](https://modrinth.com/plugin/vaultunlocked)
+
+
+# Feature list
 Checked boxes are features that have been implemented!
 - [ ] Banking System
 - [ ] Shops
