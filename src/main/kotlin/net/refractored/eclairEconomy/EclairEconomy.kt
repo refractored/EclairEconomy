@@ -2,18 +2,17 @@ package net.refractored.eclairEconomy
 
 import com.github.shynixn.mccoroutine.folia.SuspendingJavaPlugin
 import io.r2dbc.spi.IsolationLevel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
-import net.refractored.eclairEconomy.messages.Messages.stringOrPath
+import net.milkbowl.vault2.economy.AsyncEconomy
+import net.milkbowl.vault2.economy.Economy
 import org.bukkit.configuration.file.FileConfiguration
+import org.bukkit.plugin.ServicePriority
 import org.jetbrains.exposed.v1.core.SqlLogger
 import org.jetbrains.exposed.v1.core.Transaction
 import org.jetbrains.exposed.v1.core.statements.StatementContext
 import org.jetbrains.exposed.v1.core.statements.expandArgs
 import org.jetbrains.exposed.v1.r2dbc.R2dbcDatabase
-import org.jetbrains.exposed.v1.r2dbc.SchemaUtils
 import org.jetbrains.exposed.v1.r2dbc.transactions.suspendTransaction
 import org.jetbrains.exposed.v1.r2dbc.transactions.transactionManager
 import org.spongepowered.configurate.CommentedConfigurationNode
@@ -35,6 +34,9 @@ class EclairEconomy : SuspendingJavaPlugin() {
     lateinit var messages: CommentedConfigurationNode
         private set
 
+    lateinit var economy: Economy
+        private set
+
     lateinit var database: R2dbcDatabase
         private set
 
@@ -46,6 +48,15 @@ class EclairEconomy : SuspendingJavaPlugin() {
         val startupTime = TimeSource.Monotonic.markNow()
 
         reload()
+
+        if (server.pluginManager.getPlugin("Vault") != null) {
+            server.servicesManager.register(
+                AsyncEconomy::class.java,
+                TODO(),
+                this,
+                ServicePriority.Highest,
+            )
+        }
 
         lamp =
             BukkitLamp

@@ -1,5 +1,6 @@
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.kotlin.dsl.buildConfigField
+import xyz.jpenilla.resourcefactory.paper.PaperPluginYaml.Load
 
 plugins {
     java
@@ -19,15 +20,18 @@ val externalDepends = mutableListOf<String>()
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.codemc.io/repository/creatorfromhell/")
 }
 
 dependencies {
     compileOnly(libs.paper.api)
+    compileOnly(libs.vault.unlocked)
 
     // External dependencies downloaded at runtime
     libLoader(libs.kotlin)
     libLoader(libs.kotlin.coroutines)
     libLoader(libs.bundles.mccoroutine)
+
     libLoader(libs.bundles.configurate)
     libLoader(libs.bundles.lamp.bukkit)
     libLoader(libs.bundles.exposed)
@@ -45,6 +49,10 @@ paperPluginYaml {
     contributors = listOf()
 
     website = "https://github.com/refractored/EclairEconomy"
+
+    dependencies {
+        server("Vault", Load.BEFORE, false) // VaultUnlocked is under the same name for old compat.
+    }
 }
 
 gversion {
