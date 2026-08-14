@@ -15,8 +15,9 @@ Several features are inspired from [Qking12's](https://github.com/qKing12) [Roya
   - PluginMessaging (Requires BungeeCord or Velocity proxy, with the companion plugin installed)
 
 # Supported Plugins
-- [Vault](https://www.spigotmc.org/resources/vault.34315/) (Not Recommended)
-- [VaultUnlocked](https://modrinth.com/plugin/vaultunlocked)
+- [Vault](https://www.spigotmc.org/resources/vault.34315/) 
+- [VaultUnlocked](https://modrinth.com/plugin/vaultunlocked) (Recommended over Vault & Provides backwards compatibility)
+<small>[See more here](https://github.com/TheNewEconomy/VaultUnlockedAPI#why-vaultunlocked)</small>
 
 
 # Feature list
