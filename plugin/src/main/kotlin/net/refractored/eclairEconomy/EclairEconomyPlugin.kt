@@ -5,7 +5,6 @@ import io.r2dbc.spi.IsolationLevel
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.milkbowl.vault2.economy.Economy
-import net.refractored.eclairEconomy.api.configuration.Messages
 import net.refractored.eclairEconomy.configurate.ComponentSerializer
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
@@ -25,7 +24,7 @@ import java.io.File
 import java.nio.file.Files
 import kotlin.time.TimeSource
 
-class EclairEconomy : SuspendingJavaPlugin() {
+class EclairEconomyPlugin : SuspendingJavaPlugin() {
     lateinit var config: CommentedConfigurationNode
         private set
 
@@ -177,7 +176,7 @@ class EclairEconomy : SuspendingJavaPlugin() {
          * The plugin's instance. The exposed API should be used instead of this when possible.
          */
         @JvmStatic
-        lateinit var instance: EclairEconomy
+        lateinit var instance: EclairEconomyPlugin
             private set
     }
 }

@@ -3,7 +3,7 @@ package net.refractored.eclairEconomy.messages
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
-import net.refractored.eclairEconomy.EclairEconomy
+import net.refractored.eclairEconomy.EclairEconomyPlugin
 import net.refractored.eclairEconomy.messages.Messages.pathString
 import net.refractored.eclairEconomy.messages.Messages.prefix
 import net.refractored.eclairEconomy.messages.Messages.toComponent
@@ -77,7 +77,7 @@ class MinimessageBuilder private constructor(
             builder.init()
             val component = builder.minimessage.toComponent(*builder.tags.toTypedArray())
             return if (builder.prefixed) {
-                EclairEconomy.instance.prefix.append(component)
+                EclairEconomyPlugin.instance.prefix.append(component)
             } else {
                 component
             }

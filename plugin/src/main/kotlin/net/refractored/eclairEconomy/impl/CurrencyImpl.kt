@@ -1,7 +1,7 @@
 package net.refractored.eclairEconomy.impl
 
 import net.kyori.adventure.text.Component
-import net.refractored.eclairEconomy.EclairEconomy
+import net.refractored.eclairEconomy.EclairEconomyPlugin
 import net.refractored.eclairEconomy.api.Currency
 import net.refractored.eclairEconomy.configurate.ComponentSerializer.component
 import net.refractored.eclairEconomy.messages.Messages.toPlainText
@@ -10,7 +10,7 @@ import org.spongepowered.configurate.ConfigurationNode
 class CurrencyImpl(
     // Private to prevent JVM clash
     private val id: String,
-    val node: ConfigurationNode = EclairEconomy.instance.currencies.node(id),
+    val node: ConfigurationNode = EclairEconomyPlugin.instance.currencies.node(id),
 ) : Currency {
     override fun getId(): String = id
 

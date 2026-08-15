@@ -8,18 +8,18 @@ import net.kyori.adventure.text.format.TextDecoration
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
-import net.refractored.eclairEconomy.EclairEconomy
+import net.refractored.eclairEconomy.EclairEconomyPlugin
 import net.refractored.eclairEconomy.configurate.ComponentSerializer.component
 import org.spongepowered.configurate.ConfigurationNode
 
 object Messages {
-    val EclairEconomy.prefix
+    val EclairEconomyPlugin.prefix
         get() =
-            EclairEconomy.instance.messages
+            EclairEconomyPlugin.instance.messages
                 .node("prefix")
                 .component
 
-    fun Component.addPrefix(): Component = EclairEconomy.instance.prefix.append(this)
+    fun Component.addPrefix(): Component = EclairEconomyPlugin.instance.prefix.append(this)
 
     fun String.toComponent(vararg tagResolvers: TagResolver): Component = MiniMessage.miniMessage().deserialize(this, *tagResolvers)
 
