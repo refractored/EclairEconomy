@@ -61,6 +61,7 @@ class EclairEconomy : SuspendingJavaPlugin() {
                 )
             } catch (e: ClassNotFoundException) {
                 server.servicesManager.register(
+                    @Suppress("DEPRECATION")
                     net.milkbowl.vault.economy.Economy::class.java,
                     TODO(),
                     this,

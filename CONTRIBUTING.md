@@ -4,7 +4,7 @@ Thank you for contributing to this project! We welcome contributions!
 
 # API
 
-APIs should be accessible in both Kotlin and Java, and written in Java. Java APIs should be annotated with JetBrains annotations, and every parameter must be annotated with @NotNull or @Nullable.
+APIs should be written and accessible in both Kotlin and Java. Java APIs should be annotated with JetBrains annotations, and every parameter must be annotated with @NotNull or @Nullable.
 
 # Credit
 
