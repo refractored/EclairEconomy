@@ -17,14 +17,12 @@ val externalDepends = mutableListOf<String>()
 
 repositories {
     mavenCentral()
-    maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.codemc.io/repository/creatorfromhell/")
 }
 
 dependencies {
     implementation(project(":api"))
 
-    compileOnly(libs.paper.api)
     compileOnly(libs.vault.unlocked)
 
     // External dependencies downloaded at runtime

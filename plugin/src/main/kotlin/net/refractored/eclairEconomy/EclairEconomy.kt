@@ -4,8 +4,10 @@ import com.github.shynixn.mccoroutine.folia.SuspendingJavaPlugin
 import io.r2dbc.spi.IsolationLevel
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
-import net.milkbowl.vault2.economy.AsyncEconomy
 import net.milkbowl.vault2.economy.Economy
+import net.refractored.eclairEconomy.api.configuration.ConfigManager
+import net.refractored.eclairEconomy.api.configuration.Messages
+import net.refractored.eclairEconomy.configurate.ComponentSerializer
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
 import org.jetbrains.exposed.v1.core.SqlLogger
@@ -20,7 +22,6 @@ import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 import revxrsal.commands.Lamp
 import revxrsal.commands.bukkit.BukkitLamp
 import revxrsal.commands.bukkit.actor.BukkitCommandActor
-import rocks.balls.shuffled.serializers.configurate.ComponentSerializer
 import java.io.File
 import java.nio.file.Files
 import kotlin.time.TimeSource
@@ -32,6 +33,9 @@ class EclairEconomy : SuspendingJavaPlugin() {
     private lateinit var lamp: Lamp<BukkitCommandActor>
 
     lateinit var messages: CommentedConfigurationNode
+        private set
+
+    lateinit var currencies: CommentedConfigurationNode
         private set
 
     lateinit var economy: Economy
@@ -95,6 +99,8 @@ class EclairEconomy : SuspendingJavaPlugin() {
 
         config = loadConfig("config.yml")
         messages = loadConfig("messages.yml")
+        currencies = loadConfig("currencies.yml")
+
         logger.info("Configuration loaded.")
 
 //        withContext(Dispatchers.IO) {
@@ -169,7 +175,7 @@ class EclairEconomy : SuspendingJavaPlugin() {
             }
 
         /**
-         * The plugin's instance
+         * The plugin's instance. The exposed API should be used instead of this when possible.
          */
         @JvmStatic
         lateinit var instance: EclairEconomy

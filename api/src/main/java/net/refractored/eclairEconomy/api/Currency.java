@@ -1,5 +1,6 @@
 package net.refractored.eclairEconomy.api;
 
+import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -25,7 +26,17 @@ public interface Currency {
      * @return the name of the currency
      */
     @NotNull
-    String getName();
+    Component getName();
+
+    /**
+     * Returns the name of the currency in plaintext.
+     *
+     * This name is also used as the singular form of the currency when displaying amounts.
+     *
+     * @return the name of the currency in plaintext
+     */
+    @NotNull
+    String getNamePlaintext();
 
     /**
      * Returns the plural name of the currency.
@@ -35,7 +46,17 @@ public interface Currency {
      * @return the plural name of the currency
      */
     @NotNull
-    String getPluralName();
+    Component getPluralName();
+
+    /**
+     * Returns the plural name of the currency in plaintext.
+     *
+     * This name is used as the plural form of the currency when displaying amounts.
+     *
+     * @return the plural name of the currency in plaintext
+     */
+    @NotNull
+    String getPluralNamePlaintext();
 
     /**
      * Returns the symbol of the currency.
@@ -45,5 +66,15 @@ public interface Currency {
      * @return the symbol of the currency
      */
     @NotNull
-    String getSymbol();
+    Component getSymbol();
+
+    /**
+     * Returns the symbol of the currency in plaintext.
+     *
+     * This symbol is used to represent the currency in a concise manner.
+     *
+     * @return the symbol of the currency in plaintext
+     */
+    @NotNull
+    String getSymbolPlaintext();
 }

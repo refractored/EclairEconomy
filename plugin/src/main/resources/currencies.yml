@@ -1,0 +1,10 @@
+# This file defined any currencies that are used in this plugin.
+# If you want to add another currency, you can copy the "default" section and change the ID to something else.
+# Changing the ID will cause all data for that currency to be stored elsewhere, so be careful when changing it.
+default:
+  # This is the name used in messages and commands for single currency.
+  #
+  # This is different from the currency's ID which should be unique and is used for storage, api ,and for anything else internal.
+  # The ID is defined by the root of this section, in this case "default".
+  name: "<gold>Coin"
+  plural-name: "<gold>Coins"

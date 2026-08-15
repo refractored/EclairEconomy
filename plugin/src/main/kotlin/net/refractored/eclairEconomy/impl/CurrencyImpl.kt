@@ -1,26 +1,28 @@
 package net.refractored.eclairEconomy.impl
 
+import net.kyori.adventure.text.Component
+import net.refractored.eclairEconomy.EclairEconomy
 import net.refractored.eclairEconomy.api.Currency
+import net.refractored.eclairEconomy.configurate.ComponentSerializer.component
+import net.refractored.eclairEconomy.messages.Messages.toPlainText
 import org.spongepowered.configurate.ConfigurationNode
 
 class CurrencyImpl(
-    val id: String,
+    // Private to prevent JVM clash
+    private val id: String,
+    val node: ConfigurationNode = EclairEconomy.instance.currencies.node(id),
 ) : Currency {
-    val node: ConfigurationNode = TODO()
+    override fun getId(): String = id
 
-    override fun getId(): String {
-        TODO("Not yet implemented")
-    }
+    override fun getName(): Component = node.node("name").component
 
-    override fun getName(): String {
-        TODO("Not yet implemented")
-    }
+    override fun getNamePlaintext(): String = name.toPlainText()
 
-    override fun getPluralName(): String {
-        TODO("Not yet implemented")
-    }
+    override fun getPluralName(): Component = node.node("plural-name").component
 
-    override fun getSymbol(): String {
-        TODO("Not yet implemented")
-    }
+    override fun getPluralNamePlaintext(): String = pluralName.toPlainText()
+
+    override fun getSymbol(): Component = node.node("symbol").component
+
+    override fun getSymbolPlaintext(): String = symbol.toPlainText()
 }

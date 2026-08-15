@@ -1,4 +1,4 @@
-package rocks.balls.shuffled.serializers.configurate
+package net.refractored.eclairEconomy.configurate
 
 import net.kyori.adventure.text.Component
 import net.refractored.eclairEconomy.messages.Messages.addPrefix
