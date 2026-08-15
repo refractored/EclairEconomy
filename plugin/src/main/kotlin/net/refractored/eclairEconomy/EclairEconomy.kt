@@ -5,7 +5,6 @@ import io.r2dbc.spi.IsolationLevel
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.milkbowl.vault2.economy.Economy
-import net.refractored.eclairEconomy.api.configuration.ConfigManager
 import net.refractored.eclairEconomy.api.configuration.Messages
 import net.refractored.eclairEconomy.configurate.ComponentSerializer
 import org.bukkit.configuration.file.FileConfiguration
