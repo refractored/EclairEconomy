@@ -5,7 +5,9 @@ import io.r2dbc.spi.IsolationLevel
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.milkbowl.vault2.economy.Economy
+import net.refractored.eclairEconomy.api.EclairEconomy
 import net.refractored.eclairEconomy.configurate.ComponentSerializer
+import net.refractored.eclairEconomy.impl.MessagesImpl
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
 import org.jetbrains.exposed.v1.core.SqlLogger
@@ -99,6 +101,8 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
         messages = loadConfig("messages.yml")
         currencies = loadConfig("currencies.yml")
 
+        setAPI()
+
         logger.info("Configuration loaded.")
 
 //        withContext(Dispatchers.IO) {
@@ -122,6 +126,10 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
 //            }
 //            logger.info("Database connected.")
 //        }
+    }
+
+    fun setAPI() {
+        EclairEconomy.setMessages(MessagesImpl)
     }
 
     private fun loadConfig(file: String): CommentedConfigurationNode {
