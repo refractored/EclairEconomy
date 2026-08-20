@@ -128,7 +128,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
 //        }
     }
 
-    fun setAPI() {
+    private fun setAPI() {
         EclairEconomy.setMessages(MessagesImpl)
     }
 
