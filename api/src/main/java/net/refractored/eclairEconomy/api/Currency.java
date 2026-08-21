@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a currency.
+ *
+ * All values here are grabbed from the configuration.
  */
 public interface Currency {
 
@@ -77,4 +79,14 @@ public interface Currency {
      */
     @NotNull
     String getSymbolPlaintext();
+
+    /**
+     * Returns whether this currency is the default currency for the vault.
+     *
+     * This will return the value set in config even if Vault or VaultUnlocked is not installed.
+     *
+     * @return True if this is the default currency, false otherwise.
+     */
+    @NotNull
+    Boolean isDefaultVault();
 }
