@@ -5,9 +5,7 @@ import io.r2dbc.spi.IsolationLevel
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.milkbowl.vault2.economy.Economy
-import net.refractored.eclairEconomy.api.EclairEconomy
 import net.refractored.eclairEconomy.api.EclairEconomyProvider
-import net.refractored.eclairEconomy.api.kotlin.getCurrency
 import net.refractored.eclairEconomy.compat.Vault
 import net.refractored.eclairEconomy.compat.VaultUnlocked
 import net.refractored.eclairEconomy.configurate.ComponentSerializer

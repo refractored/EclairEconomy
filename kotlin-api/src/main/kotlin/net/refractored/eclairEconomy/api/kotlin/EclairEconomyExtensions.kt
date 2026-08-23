@@ -12,4 +12,4 @@ import kotlin.jvm.optionals.getOrNull
  * @param currencyId The ID of the currency to retrieve.
  * @return The Currency object if found, or null if not found.
  */
-inline fun EclairEconomy.getCurrencyOrNull(currencyId: String): Currency? = getCurrency(currencyId).getOrNull()
+public inline fun EclairEconomy.getCurrencyOrNull(currencyId: String): Currency? = getCurrency(currencyId).getOrNull()

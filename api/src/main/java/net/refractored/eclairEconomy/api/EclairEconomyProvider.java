@@ -3,9 +3,12 @@ package net.refractored.eclairEconomy.api;
 import java.util.Objects;
 
 public final class EclairEconomyProvider {
+    /**
+     * The EclairEconomy provider instance.
+     */
     private static EclairEconomy provider;
 
-    private EclairEconomyProvider() {}
+    private EclairEconomyProvider() { }
 
     /**
      * Sets the EclairEconomy provider instance.
@@ -14,7 +17,7 @@ public final class EclairEconomyProvider {
      * @throws NullPointerException if the instance is null.
      * @throws IllegalStateException if the provider has already been initialized.
      */
-    public static synchronized void setProvider(EclairEconomy instance) {
+    public static synchronized void setProvider(final EclairEconomy instance) {
         Objects.requireNonNull(instance);
         if (provider != null) {
             throw new IllegalStateException("EclairEconomy provider already initialized");
@@ -37,4 +40,5 @@ public final class EclairEconomyProvider {
         }
         return provider;
     }
+
 }

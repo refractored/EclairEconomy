@@ -1,4 +1,4 @@
-package net.refractored.eclairEconomy.impl
+package net.refractored.eclairEconomy.impl.configuration
 
 import net.kyori.adventure.text.Component
 import net.refractored.eclairEconomy.EclairEconomyPlugin

@@ -3,6 +3,7 @@ package net.refractored.eclairEconomy.impl
 import net.refractored.eclairEconomy.api.Currency
 import net.refractored.eclairEconomy.api.EclairEconomy
 import net.refractored.eclairEconomy.api.configuration.Messages
+import net.refractored.eclairEconomy.impl.configuration.MessagesImpl
 import java.util.Optional
 
 object EclairEconomyImpl : EclairEconomy {

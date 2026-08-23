@@ -1,7 +1,6 @@
 package net.refractored.eclairEconomy.api;
 
 import net.refractored.eclairEconomy.api.configuration.Messages;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;

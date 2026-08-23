@@ -83,6 +83,14 @@ tasks {
     compileKotlin {
         dependsOn(createVersionFile)
     }
+
+    jar {
+        archiveBaseName.set("EclairEconomy")
+        archiveVersion.set(version.toString())
+
+        from(project(":api").sourceSets["main"].output)
+        from(project(":kotlin-api").sourceSets["main"].output)
+    }
 }
 
 /**

@@ -9,6 +9,14 @@ plugins {
 val targetJavaVersion = 25
 
 dependencies {
-    implementation(project(":api"))
+    api(project(":api"))
     compileOnly(libs.kotlin)
+}
+
+kotlin {
+    explicitApi()
+
+    compilerOptions {
+        allWarningsAsErrors.set(true)
+    }
 }
