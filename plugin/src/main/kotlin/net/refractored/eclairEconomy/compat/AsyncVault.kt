@@ -13,7 +13,7 @@ object AsyncVault : AsyncEconomy {
     override fun createAccount(
         accountID: UUID,
         name: String,
-        player: Boolean,
+        player: Boolean
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -22,7 +22,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         name: String,
         worldName: String,
-        player: Boolean,
+        player: Boolean
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -41,7 +41,7 @@ object AsyncVault : AsyncEconomy {
 
     override fun hasAccount(
         accountID: UUID,
-        worldName: String,
+        worldName: String
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -49,14 +49,22 @@ object AsyncVault : AsyncEconomy {
     override fun renameAccount(
         pluginName: String,
         accountID: UUID,
-        name: String,
+        name: String
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
 
     override fun deleteAccount(
         pluginName: String,
+        accountID: UUID
+    ): CompletableFuture<Boolean?> {
+        TODO("Not yet implemented")
+    }
+
+    override fun accountSupportsCurrency(
+        pluginName: String,
         accountID: UUID,
+        currency: String
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -65,22 +73,22 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         currency: String,
-    ): CompletableFuture<Boolean?> {
-        TODO("Not yet implemented")
-    }
-
-    override fun accountSupportsCurrency(
-        pluginName: String,
-        accountID: UUID,
-        currency: String,
-        world: String,
+        world: String
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
 
     override fun balance(
         pluginName: String,
+        accountID: UUID
+    ): CompletableFuture<BigDecimal?> {
+        TODO("Not yet implemented")
+    }
+
+    override fun balance(
+        pluginName: String,
         accountID: UUID,
+        world: String
     ): CompletableFuture<BigDecimal?> {
         TODO("Not yet implemented")
     }
@@ -89,15 +97,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         world: String,
-    ): CompletableFuture<BigDecimal?> {
-        TODO("Not yet implemented")
-    }
-
-    override fun balance(
-        pluginName: String,
-        accountID: UUID,
-        world: String,
-        currency: String,
+        currency: String
     ): CompletableFuture<BigDecimal?> {
         TODO("Not yet implemented")
     }
@@ -105,7 +105,7 @@ object AsyncVault : AsyncEconomy {
     override fun has(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -114,7 +114,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         world: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -124,7 +124,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         world: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -132,7 +132,7 @@ object AsyncVault : AsyncEconomy {
     override fun set(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -141,7 +141,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         world: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -151,7 +151,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         world: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -160,7 +160,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         from: UUID,
         to: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<MultiEconomyResponse?>? {
         TODO("Not yet implemented")
     }
@@ -170,7 +170,7 @@ object AsyncVault : AsyncEconomy {
         from: UUID,
         to: UUID,
         worldName: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<MultiEconomyResponse?>? {
         TODO("Not yet implemented")
     }
@@ -181,7 +181,7 @@ object AsyncVault : AsyncEconomy {
         to: UUID,
         worldName: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<MultiEconomyResponse?>? {
         TODO("Not yet implemented")
     }
@@ -189,7 +189,7 @@ object AsyncVault : AsyncEconomy {
     override fun canWithdraw(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -198,7 +198,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         world: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -208,7 +208,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         world: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -216,7 +216,7 @@ object AsyncVault : AsyncEconomy {
     override fun withdraw(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -225,7 +225,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         world: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -235,7 +235,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         world: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -243,7 +243,7 @@ object AsyncVault : AsyncEconomy {
     override fun canDeposit(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -252,7 +252,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         world: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -262,7 +262,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         world: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -270,7 +270,7 @@ object AsyncVault : AsyncEconomy {
     override fun deposit(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -279,7 +279,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         world: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -289,7 +289,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         world: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): CompletableFuture<EconomyResponse?> {
         TODO("Not yet implemented")
     }
@@ -298,21 +298,21 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         name: String,
-        owner: UUID,
+        owner: UUID
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
 
     override fun accountsWithOwnerOf(
         pluginName: String,
-        accountID: UUID,
+        accountID: UUID
     ): CompletableFuture<List<UUID?>?> {
         TODO("Not yet implemented")
     }
 
     override fun accountsWithMembershipTo(
         pluginName: String,
-        accountID: UUID,
+        accountID: UUID
     ): CompletableFuture<List<UUID?>?> {
         TODO("Not yet implemented")
     }
@@ -320,7 +320,7 @@ object AsyncVault : AsyncEconomy {
     override fun accountsWithAccessTo(
         pluginName: String,
         accountID: UUID,
-        vararg permissions: AccountPermission,
+        vararg permissions: AccountPermission
     ): CompletableFuture<List<UUID?>?> {
         TODO("Not yet implemented")
     }
@@ -328,7 +328,7 @@ object AsyncVault : AsyncEconomy {
     override fun isAccountOwner(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -336,7 +336,7 @@ object AsyncVault : AsyncEconomy {
     override fun setOwner(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -344,7 +344,15 @@ object AsyncVault : AsyncEconomy {
     override fun isAccountMember(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
+    ): CompletableFuture<Boolean?> {
+        TODO("Not yet implemented")
+    }
+
+    override fun addAccountMember(
+        pluginName: String,
+        accountID: UUID,
+        uuid: UUID
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -353,15 +361,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         uuid: UUID,
-    ): CompletableFuture<Boolean?> {
-        TODO("Not yet implemented")
-    }
-
-    override fun addAccountMember(
-        pluginName: String,
-        accountID: UUID,
-        uuid: UUID,
-        vararg initialPermissions: AccountPermission,
+        vararg initialPermissions: AccountPermission
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -369,7 +369,7 @@ object AsyncVault : AsyncEconomy {
     override fun removeAccountMember(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -378,7 +378,7 @@ object AsyncVault : AsyncEconomy {
         pluginName: String,
         accountID: UUID,
         uuid: UUID,
-        permission: AccountPermission,
+        permission: AccountPermission
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }
@@ -388,7 +388,7 @@ object AsyncVault : AsyncEconomy {
         accountID: UUID,
         uuid: UUID,
         permission: AccountPermission,
-        value: Boolean,
+        value: Boolean
     ): CompletableFuture<Boolean?> {
         TODO("Not yet implemented")
     }

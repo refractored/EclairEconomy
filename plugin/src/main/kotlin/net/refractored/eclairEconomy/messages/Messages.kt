@@ -35,22 +35,21 @@ object Messages {
         names: MutableList<String>,
         seperator: JoinConfiguration = defaultJoinConfig,
         apply: TextComponent.Builder.() -> Unit = {
-        },
-    ): Component =
-        Component.join(
-            seperator,
-            names.map { content: String ->
-                Component.text { builder ->
-                    builder.content(content)
-                    builder.apply()
-                }
-            },
-        )
+        }
+    ): Component = Component.join(
+        seperator,
+        names.map { content: String ->
+            Component.text { builder ->
+                builder.content(content)
+                builder.apply()
+            }
+        }
+    )
 
     val defaultJoinConfig: JoinConfiguration =
         JoinConfiguration.separators(
             Component.text(", "),
-            Component.text(", and "),
+            Component.text(", and ")
         )
 
     val ConfigurationNode.stringOrPath: String
@@ -70,15 +69,14 @@ object Messages {
      */
     fun Component.replace(
         oldValue: String,
-        newValue: Component,
-    ): Component =
-        this.replaceText(
-            TextReplacementConfig
-                .builder()
-                .matchLiteral(oldValue)
-                .replacement(newValue)
-                .build(),
-        )
+        newValue: Component
+    ): Component = this.replaceText(
+        TextReplacementConfig
+            .builder()
+            .matchLiteral(oldValue)
+            .replacement(newValue)
+            .build()
+    )
 
     /**
      * Returns a new component obtained by replacing all occurrences of the [oldValue] substring in this component
@@ -86,13 +84,12 @@ object Messages {
      */
     fun Component.replace(
         oldValue: String,
-        newValue: String,
-    ): Component =
-        this.replaceText(
-            TextReplacementConfig
-                .builder()
-                .matchLiteral(oldValue)
-                .replacement(newValue)
-                .build(),
-        )
+        newValue: String
+    ): Component = this.replaceText(
+        TextReplacementConfig
+            .builder()
+            .matchLiteral(oldValue)
+            .replacement(newValue)
+            .build()
+    )
 }

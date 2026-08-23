@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.gversion)
     alias(libs.plugins.buildconfig)
     alias(libs.plugins.paper.run)
+    alias(libs.plugins.ktlint)
 }
 
 val targetJavaVersion = 25
@@ -101,39 +102,38 @@ tasks {
  *
  * @throws IllegalArgumentException If the dependency is unsupported.
  */
-fun DependencyHandler.libLoader(dep: Any?): Dependency? =
-    when (dep) {
-        is String -> {
-            externalDepends.add(dep)
-            compileOnly(dep)
-        }
+fun DependencyHandler.libLoader(dep: Any?): Dependency? = when (dep) {
+    is String -> {
+        externalDepends.add(dep)
+        compileOnly(dep)
+    }
 
-        is LibrariesForLibs.KotlinLibraryAccessors -> {
-            externalDepends.add(dep.asProvider().get().toString())
-            compileOnly(dep)
-        }
+    is LibrariesForLibs.KotlinLibraryAccessors -> {
+        externalDepends.add(dep.asProvider().get().toString())
+        compileOnly(dep)
+    }
 
-        is Provider<*> -> {
-            when (val resolved = dep.get()) {
-                is MinimalExternalModuleDependency -> {
-                    externalDepends.add(resolved.toString())
-                    compileOnly(dep)
+    is Provider<*> -> {
+        when (val resolved = dep.get()) {
+            is MinimalExternalModuleDependency -> {
+                externalDepends.add(resolved.toString())
+                compileOnly(dep)
+            }
+
+            is ExternalModuleDependencyBundle -> {
+                resolved.forEach { bundledDep ->
+                    externalDepends.add(bundledDep.toString())
                 }
+                compileOnly(dep)
+            }
 
-                is ExternalModuleDependencyBundle -> {
-                    resolved.forEach { bundledDep ->
-                        externalDepends.add(bundledDep.toString())
-                    }
-                    compileOnly(dep)
-                }
-
-                else -> {
-                    throw IllegalArgumentException("Unsupported Provider: ${resolved::class.java.name}")
-                }
+            else -> {
+                throw IllegalArgumentException("Unsupported Provider: ${resolved::class.java.name}")
             }
         }
-
-        else -> {
-            throw IllegalArgumentException("Unsupported dependency: $dep")
-        }
     }
+
+    else -> {
+        throw IllegalArgumentException("Unsupported dependency: $dep")
+    }
+}

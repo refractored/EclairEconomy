@@ -10,7 +10,7 @@ import org.spongepowered.configurate.ConfigurationNode
 class CurrencyImpl(
     // Private to prevent JVM clash
     private val id: String,
-    val node: ConfigurationNode = EclairEconomyPlugin.instance.currencies.node(id),
+    val node: ConfigurationNode = EclairEconomyPlugin.instance.currencies.node(id)
 ) : Currency {
     override fun getId(): String = id
 

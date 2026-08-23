@@ -32,14 +32,14 @@ object VaultUnlocked : Economy {
 
     override fun format(
         pluginName: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): String {
         TODO("Not yet implemented")
     }
 
     override fun format(
         amount: BigDecimal,
-        currency: String,
+        currency: String
     ): String {
         TODO("Not yet implemented")
     }
@@ -47,7 +47,7 @@ object VaultUnlocked : Economy {
     override fun format(
         pluginName: String,
         amount: BigDecimal,
-        currency: String,
+        currency: String
     ): String {
         TODO("Not yet implemented")
     }
@@ -74,26 +74,26 @@ object VaultUnlocked : Economy {
 
     override fun createAccount(
         accountID: UUID,
-        name: String,
+        name: String
     ): Boolean = createAccount(accountID, name, false)
 
     override fun createAccount(
         accountID: UUID,
         name: String,
-        player: Boolean,
+        player: Boolean
     ): Boolean = createAccount(accountID, name, "", player)
 
     override fun createAccount(
         accountID: UUID,
         name: String,
-        worldName: String,
+        worldName: String
     ): Boolean = createAccount(accountID, name, worldName, false)
 
     override fun createAccount(
         accountID: UUID,
         name: String,
         worldName: String,
-        player: Boolean,
+        player: Boolean
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -112,14 +112,14 @@ object VaultUnlocked : Economy {
 
     override fun hasAccount(
         accountID: UUID,
-        worldName: String,
+        worldName: String
     ): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun renameAccount(
         accountID: UUID,
-        name: String,
+        name: String
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -127,14 +127,22 @@ object VaultUnlocked : Economy {
     override fun renameAccount(
         pluginName: String,
         accountID: UUID,
-        name: String,
+        name: String
     ): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun deleteAccount(
         pluginName: String,
+        accountID: UUID
+    ): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun accountSupportsCurrency(
+        pluginName: String,
         accountID: UUID,
+        currency: String
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -143,22 +151,22 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         currency: String,
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun accountSupportsCurrency(
-        pluginName: String,
-        accountID: UUID,
-        currency: String,
-        world: String,
+        world: String
     ): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun getBalance(
         pluginName: String,
+        accountID: UUID
+    ): BigDecimal {
+        TODO("Not yet implemented")
+    }
+
+    override fun getBalance(
+        pluginName: String,
         accountID: UUID,
+        world: String
     ): BigDecimal {
         TODO("Not yet implemented")
     }
@@ -167,15 +175,7 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         world: String,
-    ): BigDecimal {
-        TODO("Not yet implemented")
-    }
-
-    override fun getBalance(
-        pluginName: String,
-        accountID: UUID,
-        world: String,
-        currency: String,
+        currency: String
     ): BigDecimal {
         TODO("Not yet implemented")
     }
@@ -183,7 +183,7 @@ object VaultUnlocked : Economy {
     override fun has(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -192,7 +192,7 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         worldName: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -202,7 +202,7 @@ object VaultUnlocked : Economy {
         accountID: UUID,
         worldName: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -210,7 +210,7 @@ object VaultUnlocked : Economy {
     override fun withdraw(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): EconomyResponse {
         TODO("Not yet implemented")
     }
@@ -219,7 +219,7 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         worldName: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): EconomyResponse {
         TODO("Not yet implemented")
     }
@@ -229,7 +229,7 @@ object VaultUnlocked : Economy {
         accountID: UUID,
         worldName: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): EconomyResponse {
         TODO("Not yet implemented")
     }
@@ -237,7 +237,7 @@ object VaultUnlocked : Economy {
     override fun deposit(
         pluginName: String,
         accountID: UUID,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): EconomyResponse {
         TODO("Not yet implemented")
     }
@@ -246,7 +246,7 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         worldName: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): EconomyResponse {
         TODO("Not yet implemented")
     }
@@ -256,7 +256,7 @@ object VaultUnlocked : Economy {
         accountID: UUID,
         worldName: String,
         currency: String,
-        amount: BigDecimal,
+        amount: BigDecimal
     ): EconomyResponse {
         TODO("Not yet implemented")
     }
@@ -265,7 +265,7 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         name: String,
-        owner: UUID,
+        owner: UUID
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -273,7 +273,7 @@ object VaultUnlocked : Economy {
     override fun isAccountOwner(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -281,7 +281,7 @@ object VaultUnlocked : Economy {
     override fun setOwner(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -289,7 +289,15 @@ object VaultUnlocked : Economy {
     override fun isAccountMember(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
+    ): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun addAccountMember(
+        pluginName: String,
+        accountID: UUID,
+        uuid: UUID
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -298,15 +306,7 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         uuid: UUID,
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun addAccountMember(
-        pluginName: String,
-        accountID: UUID,
-        uuid: UUID,
-        vararg initialPermissions: AccountPermission,
+        vararg initialPermissions: AccountPermission
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -314,7 +314,7 @@ object VaultUnlocked : Economy {
     override fun removeAccountMember(
         pluginName: String,
         accountID: UUID,
-        uuid: UUID,
+        uuid: UUID
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -323,7 +323,7 @@ object VaultUnlocked : Economy {
         pluginName: String,
         accountID: UUID,
         uuid: UUID,
-        permission: AccountPermission,
+        permission: AccountPermission
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -333,7 +333,7 @@ object VaultUnlocked : Economy {
         accountID: UUID,
         uuid: UUID,
         permission: AccountPermission,
-        value: Boolean,
+        value: Boolean
     ): Boolean {
         TODO("Not yet implemented")
     }

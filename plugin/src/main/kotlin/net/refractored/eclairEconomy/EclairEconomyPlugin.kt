@@ -62,7 +62,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
                     Economy::class.java,
                     VaultUnlocked,
                     this,
-                    ServicePriority.High,
+                    ServicePriority.High
                 )
             } catch (_: ClassNotFoundException) {
                 server.servicesManager.register(
@@ -70,7 +70,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
                     net.milkbowl.vault.economy.Economy::class.java,
                     Vault,
                     this,
-                    ServicePriority.High,
+                    ServicePriority.High
                 )
             }
         }
@@ -85,7 +85,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
         logger.info("Commands registered.")
 
         componentLogger.info(
-            Component.text("Enabled in ${startupTime.elapsedNow().inWholeMilliseconds}ms", NamedTextColor.GREEN),
+            Component.text("Enabled in ${startupTime.elapsedNow().inWholeMilliseconds}ms", NamedTextColor.GREEN)
         )
     }
 
@@ -132,7 +132,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
             javaClass.getResourceAsStream("/$file")?.let {
                 Files.copy(
                     it,
-                    dataFolder.toPath().resolve(file),
+                    dataFolder.toPath().resolve(file)
                 )
             }
         }
@@ -157,23 +157,22 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
             db: R2dbcDatabase? = null,
             transactionIsolation: IsolationLevel? = db?.transactionManager?.defaultIsolationLevel,
             readOnly: Boolean? = db?.transactionManager?.defaultReadOnly,
-            statement: suspend Transaction.() -> T,
-        ): T =
-            suspendTransaction(db, transactionIsolation, readOnly) {
-                if (instance.config.node("database", "verbose").boolean) {
-                    addLogger(
-                        object : SqlLogger {
-                            override fun log(
-                                context: StatementContext,
-                                transaction: Transaction,
-                            ) {
-                                instance.logger.info("SQL: ${context.expandArgs(transaction)}")
-                            }
-                        },
-                    )
-                }
-                statement()
+            statement: suspend Transaction.() -> T
+        ): T = suspendTransaction(db, transactionIsolation, readOnly) {
+            if (instance.config.node("database", "verbose").boolean) {
+                addLogger(
+                    object : SqlLogger {
+                        override fun log(
+                            context: StatementContext,
+                            transaction: Transaction
+                        ) {
+                            instance.logger.info("SQL: ${context.expandArgs(transaction)}")
+                        }
+                    }
+                )
             }
+            statement()
+        }
 
         /**
          * The plugin's instance. The exposed API should be used instead of this when possible.

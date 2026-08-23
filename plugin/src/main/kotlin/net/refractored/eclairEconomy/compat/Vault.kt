@@ -43,14 +43,14 @@ object Vault : Economy {
 
     override fun hasAccount(
         playerName: String?,
-        worldName: String?,
+        worldName: String?
     ): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun hasAccount(
         player: OfflinePlayer?,
-        worldName: String?,
+        worldName: String?
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -65,28 +65,28 @@ object Vault : Economy {
 
     override fun getBalance(
         playerName: String?,
-        world: String?,
+        world: String?
     ): Double {
         TODO("Not yet implemented")
     }
 
     override fun getBalance(
         player: OfflinePlayer?,
-        world: String?,
+        world: String?
     ): Double {
         TODO("Not yet implemented")
     }
 
     override fun has(
         playerName: String?,
-        amount: Double,
+        amount: Double
     ): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun has(
         player: OfflinePlayer?,
-        amount: Double,
+        amount: Double
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -94,7 +94,7 @@ object Vault : Economy {
     override fun has(
         playerName: String?,
         worldName: String?,
-        amount: Double,
+        amount: Double
     ): Boolean {
         TODO("Not yet implemented")
     }
@@ -102,21 +102,21 @@ object Vault : Economy {
     override fun has(
         player: OfflinePlayer?,
         worldName: String?,
-        amount: Double,
+        amount: Double
     ): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun withdrawPlayer(
         playerName: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun withdrawPlayer(
         player: OfflinePlayer?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
@@ -124,7 +124,7 @@ object Vault : Economy {
     override fun withdrawPlayer(
         playerName: String?,
         worldName: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
@@ -132,21 +132,21 @@ object Vault : Economy {
     override fun withdrawPlayer(
         player: OfflinePlayer?,
         worldName: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun depositPlayer(
         playerName: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun depositPlayer(
         player: OfflinePlayer?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
@@ -154,7 +154,7 @@ object Vault : Economy {
     override fun depositPlayer(
         playerName: String?,
         worldName: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
@@ -162,21 +162,21 @@ object Vault : Economy {
     override fun depositPlayer(
         player: OfflinePlayer?,
         worldName: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun createBank(
         name: String?,
-        player: String?,
+        player: String?
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun createBank(
         name: String?,
-        player: OfflinePlayer?,
+        player: OfflinePlayer?
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
@@ -191,49 +191,49 @@ object Vault : Economy {
 
     override fun bankHas(
         name: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun bankWithdraw(
         name: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun bankDeposit(
         name: String?,
-        amount: Double,
+        amount: Double
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun isBankOwner(
         name: String?,
-        playerName: String?,
+        playerName: String?
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun isBankOwner(
         name: String?,
-        player: OfflinePlayer?,
+        player: OfflinePlayer?
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun isBankMember(
         name: String?,
-        playerName: String?,
+        playerName: String?
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
 
     override fun isBankMember(
         name: String?,
-        player: OfflinePlayer?,
+        player: OfflinePlayer?
     ): EconomyResponse? {
         TODO("Not yet implemented")
     }
@@ -252,14 +252,14 @@ object Vault : Economy {
 
     override fun createPlayerAccount(
         playerName: String?,
-        worldName: String?,
+        worldName: String?
     ): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun createPlayerAccount(
         player: OfflinePlayer?,
-        worldName: String?,
+        worldName: String?
     ): Boolean {
         TODO("Not yet implemented")
     }

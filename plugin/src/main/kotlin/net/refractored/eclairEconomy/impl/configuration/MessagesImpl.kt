@@ -7,13 +7,11 @@ import net.refractored.eclairEconomy.configurate.ComponentSerializer.component
 import net.refractored.eclairEconomy.messages.Messages.stringOrPath
 
 object MessagesImpl : Messages {
-    override fun getMessage(vararg args: String): Component =
-        EclairEconomyPlugin.instance.messages
-            .node(*args)
-            .component
+    override fun getMessage(vararg args: String): Component = EclairEconomyPlugin.instance.messages
+        .node(*args)
+        .component
 
-    override fun getString(vararg args: String): String =
-        EclairEconomyPlugin.instance.messages
-            .node(*args)
-            .stringOrPath
+    override fun getString(vararg args: String): String = EclairEconomyPlugin.instance.messages
+        .node(*args)
+        .stringOrPath
 }

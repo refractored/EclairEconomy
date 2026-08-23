@@ -14,13 +14,13 @@ import java.lang.reflect.Type
 object ComponentSerializer : TypeSerializer<Component> {
     override fun deserialize(
         type: Type,
-        node: ConfigurationNode,
+        node: ConfigurationNode
     ): Component = (node.string ?: node.pathString).toComponent().fixItalics()
 
     override fun serialize(
         type: Type,
         obj: Component?,
-        node: ConfigurationNode,
+        node: ConfigurationNode
     ) {
         node.set(obj?.toMinimessage())
     }

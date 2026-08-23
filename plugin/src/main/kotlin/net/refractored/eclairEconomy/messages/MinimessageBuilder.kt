@@ -10,7 +10,7 @@ import net.refractored.eclairEconomy.messages.Messages.toComponent
 import org.spongepowered.configurate.CommentedConfigurationNode
 
 class MinimessageBuilder private constructor(
-    var minimessage: String,
+    var minimessage: String
 ) : Cloneable {
     val tags = mutableListOf<TagResolver>()
 
@@ -24,10 +24,10 @@ class MinimessageBuilder private constructor(
      */
     fun replace(
         key: String,
-        newValue: Component,
+        newValue: Component
     ) {
         tags.add(
-            Placeholder.component(key, newValue),
+            Placeholder.component(key, newValue)
         )
     }
 
@@ -40,16 +40,16 @@ class MinimessageBuilder private constructor(
     fun replace(
         key: String,
         newValue: String,
-        parsed: Boolean = false,
+        parsed: Boolean = false
     ) {
         if (key.contains('%')) throw IllegalArgumentException("Placeholder keys cannot contain '%' characters")
         if (parsed) {
             tags.add(
-                Placeholder.parsed(key, newValue),
+                Placeholder.parsed(key, newValue)
             )
         } else {
             tags.add(
-                Placeholder.unparsed(key, newValue),
+                Placeholder.unparsed(key, newValue)
             )
         }
     }
@@ -71,7 +71,7 @@ class MinimessageBuilder private constructor(
          */
         fun builder(
             minimessage: String,
-            init: MinimessageBuilder.() -> Unit,
+            init: MinimessageBuilder.() -> Unit
         ): Component {
             val builder = MinimessageBuilder(minimessage)
             builder.init()
