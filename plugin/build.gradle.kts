@@ -22,6 +22,7 @@ repositories {
 
 dependencies {
     implementation(project(":api"))
+    implementation(project(":kotlin-api"))
 
     compileOnly(libs.vault.unlocked)
 
@@ -40,8 +41,8 @@ paperPluginYaml {
     main = "$group.eclairEconomy.EclairEconomy"
     loader = "$group.eclairEconomy.EclairEconomyLoader"
     foliaSupported = true // Probably would need more testing.
-    apiVersion = "${libs.versions.minecraft.get()}"
-    version = "${version.get()}"
+    apiVersion = libs.versions.minecraft.get()
+    version = version.get()
 
     authors = listOf("refractored")
     contributors = listOf()

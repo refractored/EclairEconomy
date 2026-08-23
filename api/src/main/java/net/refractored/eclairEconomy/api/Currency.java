@@ -81,12 +81,10 @@ public interface Currency {
     String getSymbolPlaintext();
 
     /**
-     * Returns whether this currency is the default currency for the vault.
-     *
-     * This will return the value set in config even if Vault or VaultUnlocked is not installed.
+     * Returns whether this currency is the default currency.
      *
      * @return True if this is the default currency, false otherwise.
      */
     @NotNull
-    Boolean isDefaultVault();
+    Boolean isDefault();
 }

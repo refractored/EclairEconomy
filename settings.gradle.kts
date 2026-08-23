@@ -1,2 +1,2 @@
 rootProject.name = "EclairEconomy"
-include("api", "plugin")
+include("api", "plugin", "kotlin-api")

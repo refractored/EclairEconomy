@@ -1,18 +1,16 @@
 # This file defined any currencies that are used in this plugin.
-# If you want to add another currency, you can copy the "default" section and change the ID to something else.
+# If you want to add another currency, you can copy the "coins" section and change the ID to something else.
 # Changing the ID will cause all data for that currency to be stored elsewhere, so be careful when changing it.
-default:
-  # This is the name used in messages and commands for single currency.
-  # This is different from the currency's ID which should be unique and is used for storage, api ,and for anything else internal.
-  # The ID is defined by the root of this section, in this case "default".
+coins:
+  # For any instance that does not support color or formatting, the colors will be stripped from the name.
   name: "<gold>Coin"
   plural-name: "<gold>Coins"
   symbol: "<gold>₵"
-  # This is the ID used to show up in the commands.
-  command-ID: "coins"
+  # This is the default amount of the currency that a player will have when they first join the server.
   default-amount: 0
-  # This can be ignored if you don't use Vault or VaultUnlocked.
-  # If this should be the default currency for any plugin using the "old" Vault API.
+  # This is the default currency that will be used if not specified in commands.
+  # One currency must have this true. Multiple cannot be the default.
+  # For Vault or VaultUnlocked users:
+  # This will be the currency used for any plugin using the "old" Vault API.
   # This also applies if you're using VaultUnlocked, as not all plugins support VaultUnlocked, so will fall back to the "old" Vault API.
-  # ONE currency must have this true, if several are set to true, the first one will be used as the default.
-  default-vault-currency: true
+  default-currency: true

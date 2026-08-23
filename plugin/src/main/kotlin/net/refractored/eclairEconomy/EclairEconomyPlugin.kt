@@ -6,8 +6,12 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.milkbowl.vault2.economy.Economy
 import net.refractored.eclairEconomy.api.EclairEconomy
+import net.refractored.eclairEconomy.api.EclairEconomyProvider
+import net.refractored.eclairEconomy.api.kotlin.getCurrency
+import net.refractored.eclairEconomy.compat.Vault
+import net.refractored.eclairEconomy.compat.VaultUnlocked
 import net.refractored.eclairEconomy.configurate.ComponentSerializer
-import net.refractored.eclairEconomy.impl.MessagesImpl
+import net.refractored.eclairEconomy.impl.EclairEconomyImpl
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
 import org.jetbrains.exposed.v1.core.SqlLogger
@@ -38,9 +42,6 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
     lateinit var currencies: CommentedConfigurationNode
         private set
 
-    lateinit var economy: Economy
-        private set
-
     lateinit var database: R2dbcDatabase
         private set
 
@@ -53,21 +54,23 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
 
         reload()
 
+        EclairEconomyProvider.setProvider(EclairEconomyImpl)
+
         if (server.pluginManager.getPlugin("Vault") != null) {
             try {
                 Class.forName("net.milkbowl.vault2.economy.Economy")
                 // TODO: Look more into how the new vault API handles old compat
                 server.servicesManager.register(
                     Economy::class.java,
-                    TODO(),
+                    VaultUnlocked,
                     this,
                     ServicePriority.High,
                 )
-            } catch (e: ClassNotFoundException) {
+            } catch (_: ClassNotFoundException) {
                 server.servicesManager.register(
                     @Suppress("DEPRECATION")
                     net.milkbowl.vault.economy.Economy::class.java,
-                    TODO(),
+                    Vault,
                     this,
                     ServicePriority.High,
                 )
@@ -101,8 +104,6 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
         messages = loadConfig("messages.yml")
         currencies = loadConfig("currencies.yml")
 
-        setAPI()
-
         logger.info("Configuration loaded.")
 
 //        withContext(Dispatchers.IO) {
@@ -126,10 +127,6 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
 //            }
 //            logger.info("Database connected.")
 //        }
-    }
-
-    private fun setAPI() {
-        EclairEconomy.setMessages(MessagesImpl)
     }
 
     private fun loadConfig(file: String): CommentedConfigurationNode {

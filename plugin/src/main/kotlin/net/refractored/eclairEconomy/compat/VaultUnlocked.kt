@@ -1,28 +1,24 @@
 package net.refractored.eclairEconomy.compat
 
 import net.milkbowl.vault2.economy.AccountPermission
+import net.milkbowl.vault2.economy.AsyncEconomy
 import net.milkbowl.vault2.economy.Economy
 import net.milkbowl.vault2.economy.EconomyResponse
+import net.refractored.eclairEconomy.EclairEconomyPlugin
 import java.math.BigDecimal
 import java.util.Optional
 import java.util.UUID
 
 object VaultUnlocked : Economy {
-    override fun isEnabled(): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun isEnabled(): Boolean = EclairEconomyPlugin.instance.isEnabled
 
-    override fun getName(): String {
-        TODO("Not yet implemented")
-    }
+    override fun getName(): String = EclairEconomyPlugin.instance.name
 
     override fun hasSharedAccountSupport(): Boolean {
         TODO("Not yet implemented")
     }
 
-    override fun hasMultiCurrencySupport(): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun hasMultiCurrencySupport(): Boolean = true
 
     override fun fractionalDigits(pluginName: String): Int {
         TODO("Not yet implemented")
@@ -31,6 +27,8 @@ object VaultUnlocked : Economy {
     override fun format(amount: BigDecimal): String {
         TODO("Not yet implemented")
     }
+
+    override fun async(): Optional<AsyncEconomy> = Optional.ofNullable(AsyncVault)
 
     override fun format(
         pluginName: String,
@@ -70,32 +68,26 @@ object VaultUnlocked : Economy {
         TODO("Not yet implemented")
     }
 
-    override fun currencies(): Collection<String?> {
+    override fun currencies(): Collection<String> {
         TODO("Not yet implemented")
     }
 
     override fun createAccount(
         accountID: UUID,
         name: String,
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
+    ): Boolean = createAccount(accountID, name, false)
 
     override fun createAccount(
         accountID: UUID,
         name: String,
         player: Boolean,
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
+    ): Boolean = createAccount(accountID, name, "", player)
 
     override fun createAccount(
         accountID: UUID,
         name: String,
         worldName: String,
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
+    ): Boolean = createAccount(accountID, name, worldName, false)
 
     override fun createAccount(
         accountID: UUID,

@@ -24,7 +24,7 @@ class CurrencyImpl(
 
     override fun getSymbol(): Component = node.node("symbol").component
 
-    override fun isDefaultVault(): Boolean = node.node("default-vault-currency").boolean
+    override fun isDefault(): Boolean = node.node("default-vault-currency").boolean
 
     override fun getSymbolPlaintext(): String = symbol.toPlainText()
 }
