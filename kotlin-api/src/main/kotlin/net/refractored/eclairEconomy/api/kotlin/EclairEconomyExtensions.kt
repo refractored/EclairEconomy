@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package net.refractored.eclairEconomy.api.kotlin
 
 import net.refractored.eclairEconomy.api.Currency
@@ -10,4 +12,4 @@ import kotlin.jvm.optionals.getOrNull
  * @param currencyId The ID of the currency to retrieve.
  * @return The Currency object if found, or null if not found.
  */
-inline fun EclairEconomy.getCurrency(currencyId: String): Currency? = getCurrency(currencyId).getOrNull()
+inline fun EclairEconomy.getCurrencyOrNull(currencyId: String): Currency? = getCurrency(currencyId).getOrNull()
