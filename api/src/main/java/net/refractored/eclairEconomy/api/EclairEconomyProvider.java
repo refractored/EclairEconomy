@@ -1,5 +1,7 @@
 package net.refractored.eclairEconomy.api;
 
+import org.jspecify.annotations.NonNull;
+
 import java.util.Objects;
 
 public final class EclairEconomyProvider {
@@ -17,7 +19,7 @@ public final class EclairEconomyProvider {
      * @throws NullPointerException if the instance is null.
      * @throws IllegalStateException if the provider has already been initialized.
      */
-    public static synchronized void setProvider(final EclairEconomy instance) {
+    public static synchronized void setProvider(final @NonNull EclairEconomy instance) {
         Objects.requireNonNull(instance);
         if (provider != null) {
             throw new IllegalStateException("EclairEconomy provider already initialized");
@@ -34,7 +36,7 @@ public final class EclairEconomyProvider {
      * @return The EclairEconomy provider instance.
      * @throws IllegalStateException if the provider has not been initialized.
      */
-    public static synchronized EclairEconomy getProvider() {
+    public static synchronized @NonNull EclairEconomy getProvider() {
         if (provider == null) {
             throw new IllegalStateException("EclairEconomy provider not initialized");
         }
