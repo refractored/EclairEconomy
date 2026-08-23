@@ -1,3 +1,5 @@
+@file:Suppress("OVERRIDE_DEPRECATION")
+
 package net.refractored.eclairEconomy.compat
 
 import net.milkbowl.vault.economy.Economy
