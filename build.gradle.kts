@@ -5,6 +5,9 @@ plugins {
 
 val targetJavaVersion = 25
 
+// Workaround for libs stating that it is unsued.
+val paperApi = libs.paper.api
+
 allprojects {
     // TODO: Use newer syntax for allprojects eventually...
     apply(plugin = "java")
@@ -17,6 +20,6 @@ allprojects {
     }
 
     dependencies {
-        compileOnly(rootProject.libs.paper.api)
+        compileOnly(paperApi)
     }
 }

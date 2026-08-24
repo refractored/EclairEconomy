@@ -6,10 +6,12 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.milkbowl.vault2.economy.Economy
 import net.refractored.eclairEconomy.api.EclairEconomyProvider
+import net.refractored.eclairEconomy.api.exceptions.IllegalConfigurationException
 import net.refractored.eclairEconomy.compat.Vault
 import net.refractored.eclairEconomy.compat.VaultUnlocked
 import net.refractored.eclairEconomy.configurate.ComponentSerializer
 import net.refractored.eclairEconomy.impl.EclairEconomyImpl
+import net.refractored.eclairEconomy.impl.configuration.Currencies
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
 import org.jetbrains.exposed.v1.core.SqlLogger
@@ -20,6 +22,7 @@ import org.jetbrains.exposed.v1.r2dbc.R2dbcDatabase
 import org.jetbrains.exposed.v1.r2dbc.transactions.suspendTransaction
 import org.jetbrains.exposed.v1.r2dbc.transactions.transactionManager
 import org.spongepowered.configurate.CommentedConfigurationNode
+import org.spongepowered.configurate.ConfigurateException
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 import revxrsal.commands.Lamp
 import revxrsal.commands.bukkit.BukkitLamp
@@ -37,7 +40,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
     lateinit var messages: CommentedConfigurationNode
         private set
 
-    lateinit var currencies: CommentedConfigurationNode
+    lateinit var currenciesConfig: CommentedConfigurationNode
         private set
 
     lateinit var database: R2dbcDatabase
@@ -50,7 +53,12 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
     override suspend fun onEnableAsync() {
         val startupTime = TimeSource.Monotonic.markNow()
 
-        reload()
+        try {
+            reload()
+        } catch (exception: IllegalConfigurationException) {
+            logger.severe("${exception.configName} failed to load: ${exception.message}")
+            throw exception
+        }
 
         EclairEconomyProvider.setProvider(EclairEconomyImpl)
 
@@ -95,14 +103,21 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
         }
     }
 
+    /**
+     * Reloads the plugin's configuration files and database connection.
+     *
+     * If any exception is thrown during the reload, the plugin will fallback to the last known good configuration.
+     *
+     * @throws IllegalConfigurationException If any configuration file is invalid.
+     */
     suspend fun reload() {
         dataFolder.mkdirs()
 
-        config = loadConfig("config.yml")
-        messages = loadConfig("messages.yml")
-        currencies = loadConfig("currencies.yml")
+        val loadedConfig = loadConfig("config.yml")
+        val loadedMessages = loadConfig("messages.yml")
+        val loadedCurrencies = loadConfig("currencies.yml")
 
-        logger.info("Configuration loaded.")
+        val currenciesInstance = Currencies(loadedCurrencies)
 
 //        withContext(Dispatchers.IO) {
 //            database =
@@ -125,6 +140,16 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
 //            }
 //            logger.info("Database connected.")
 //        }
+
+        config = loadedConfig
+        messages = loadedMessages
+        currenciesConfig = loadedCurrencies
+
+        EclairEconomyImpl.loadedCurrencies = currenciesInstance
+
+        // TODO: Fire a reload event.
+
+        logger.info("Configuration loaded.")
     }
 
     private fun loadConfig(file: String): CommentedConfigurationNode {
@@ -147,9 +172,14 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
                 }.path(dataFolder.toPath().resolve(file))
                 .build()
 
-        return loader.load()
+        try {
+            return loader.load()
+        } catch (exception: ConfigurateException) {
+            throw IllegalConfigurationException(exception.message ?: "An unknown error occurred.", file)
+        }
     }
 
+    @Deprecated("", ReplaceWith("config"))
     override fun getConfig(): FileConfiguration = throw UnsupportedOperationException("Config is not a FileConfiguration.")
 
     companion object {
