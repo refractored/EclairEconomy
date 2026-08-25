@@ -1,5 +1,4 @@
 import org.gradle.accessors.dm.LibrariesForLibs
-import org.gradle.kotlin.dsl.buildConfigField
 import xyz.jpenilla.resourcefactory.paper.PaperPluginYaml.Load
 
 plugins {

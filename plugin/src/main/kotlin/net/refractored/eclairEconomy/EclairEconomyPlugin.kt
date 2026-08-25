@@ -1,7 +1,8 @@
 package net.refractored.eclairEconomy
 
 import com.github.shynixn.mccoroutine.folia.SuspendingJavaPlugin
-import io.r2dbc.spi.IsolationLevel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.milkbowl.vault2.economy.Economy
@@ -14,13 +15,7 @@ import net.refractored.eclairEconomy.impl.EclairEconomyImpl
 import net.refractored.eclairEconomy.impl.configuration.Currencies
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.ServicePriority
-import org.jetbrains.exposed.v1.core.SqlLogger
-import org.jetbrains.exposed.v1.core.Transaction
-import org.jetbrains.exposed.v1.core.statements.StatementContext
-import org.jetbrains.exposed.v1.core.statements.expandArgs
 import org.jetbrains.exposed.v1.r2dbc.R2dbcDatabase
-import org.jetbrains.exposed.v1.r2dbc.transactions.suspendTransaction
-import org.jetbrains.exposed.v1.r2dbc.transactions.transactionManager
 import org.spongepowered.configurate.CommentedConfigurationNode
 import org.spongepowered.configurate.ConfigurateException
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader
@@ -119,7 +114,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
 
         val currenciesInstance = Currencies(loadedCurrencies)
 
-//        withContext(Dispatchers.IO) {
+        withContext(Dispatchers.IO) {
 //            database =
 //                R2dbcDatabase.connect(
 //                    config
@@ -139,7 +134,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
 // //                SchemaUtils.create(TODO())
 //            }
 //            logger.info("Database connected.")
-//        }
+        }
 
         config = loadedConfig
         messages = loadedMessages
@@ -183,27 +178,6 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
     override fun getConfig(): FileConfiguration = throw UnsupportedOperationException("Config is not a FileConfiguration.")
 
     companion object {
-        suspend fun <T> loggedTransaction(
-            db: R2dbcDatabase? = null,
-            transactionIsolation: IsolationLevel? = db?.transactionManager?.defaultIsolationLevel,
-            readOnly: Boolean? = db?.transactionManager?.defaultReadOnly,
-            statement: suspend Transaction.() -> T
-        ): T = suspendTransaction(db, transactionIsolation, readOnly) {
-            if (instance.config.node("database", "verbose").boolean) {
-                addLogger(
-                    object : SqlLogger {
-                        override fun log(
-                            context: StatementContext,
-                            transaction: Transaction
-                        ) {
-                            instance.logger.info("SQL: ${context.expandArgs(transaction)}")
-                        }
-                    }
-                )
-            }
-            statement()
-        }
-
         /**
          * The plugin's instance. The exposed API should be used instead of this when possible.
          */
