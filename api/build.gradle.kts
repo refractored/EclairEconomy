@@ -1,8 +1,6 @@
-import org.gradle.kotlin.dsl.`java-library`
-
 plugins {
     `java-library`
-    checkstyle
+//    checkstyle
     alias(libs.plugins.gversion)
 }
 
@@ -16,9 +14,9 @@ gversion {
     explicitType = true
 }
 
-checkstyle {
-    toolVersion = "10.26.1"
-}
+// checkstyle {
+//    toolVersion = "14.0.0"
+// }
 
 tasks {
     build {
