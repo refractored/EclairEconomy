@@ -7,11 +7,10 @@ import java.io.IOException;
 
 
 public class IllegalConfigurationException extends IOException {
-    private @NotNull String configName;
+    private final @NotNull String configName;
 
     /**
      * Exception thrown when the configuration is invalid or is in an illegal state.
-     *
      * Examples of this are if something is not defined, yet is required, or if a value is invalid.
      *
      * @param fileName The name of the configuration that is invalid.
