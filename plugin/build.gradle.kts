@@ -40,8 +40,9 @@ dependencies {
 }
 
 paperPluginYaml {
-    main = "$group.eclairEconomy.EclairEconomy"
+    main = "$group.eclairEconomy.EclairEconomyPlugin"
     loader = "$group.eclairEconomy.EclairEconomyLoader"
+    name = "EclairEconomy"
     foliaSupported = true // Probably would need more testing.
     apiVersion = libs.versions.minecraft.get()
     version = version.get()
@@ -80,6 +81,10 @@ tasks {
     runServer {
         minecraftVersion(libs.versions.minecraft.get())
         jvmArgs("-Xms2G", "-Xmx2G", "-Dcom.mojang.eula.agree=true")
+
+        downloadPlugins {
+            hangar("vaultunlocked", "2.20.2")
+        }
     }
 
     compileKotlin {

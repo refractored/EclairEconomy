@@ -67,6 +67,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
                     this,
                     ServicePriority.High
                 )
+                logger.info("VaultUnlocked integration enabled.")
             } catch (_: ClassNotFoundException) {
                 server.servicesManager.register(
                     @Suppress("DEPRECATION")
@@ -75,6 +76,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
                     this,
                     ServicePriority.High
                 )
+                logger.info("Legacy Vault integration enabled.")
             }
         }
 
