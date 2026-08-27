@@ -38,7 +38,7 @@ public interface EclairEconomy {
      * @param currencyId The unique identifier of the currency.
      * @return The currency's instance if found, otherwise an empty Optional.
      */
-    @NotNull Optional<Currency> getCurrency(String currencyId);
+    @NotNull Optional<Currency> getCurrency(@NotNull String currencyId);
 
     /**
      * Gets the default currency as defined in the configuration.

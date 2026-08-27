@@ -12,15 +12,9 @@ object EclairEconomyImpl : EclairEconomy {
 
     lateinit var loadedCurrencies: Currencies
 
-    override fun getCurrencies(): Collection<Currency> {
-        TODO("Not yet implemented")
-    }
+    override fun getCurrencies(): Collection<Currency> = loadedCurrencies.allCurrencies.values
 
-    override fun getCurrency(currencyId: String?): Optional<Currency?> {
-        TODO("Not yet implemented")
-    }
+    override fun getCurrency(currencyId: String): Optional<Currency> = Optional.ofNullable(loadedCurrencies.allCurrencies[currencyId])
 
-    override fun getDefaultCurrency(): Currency {
-        TODO("Not yet implemented")
-    }
+    override fun getDefaultCurrency(): Currency = loadedCurrencies.defaultCurrency
 }
