@@ -18,6 +18,8 @@ r2dbc-h2 = "1.1.0.RELEASE"
 r2dbc-mariadb = "1.4.1"
 r2dbc-mysql = "1.4.3"
 ktlint = "14.2.0"
+caffine = "3.2.4"
+aedile = "3.0.4"
 
 [libraries]
 paper-api = { module = "io.papermc.paper:paper-api", version.ref = "paper-api" }
@@ -39,6 +41,8 @@ exposed-migration-r2dbc = { module = "org.jetbrains.exposed:exposed-migration-r2
 r2dbc-h2 = { module = "io.r2dbc:r2dbc-h2", version.ref = "r2dbc-h2" }
 r2dbc-mariadb = { module = "org.mariadb:r2dbc-mariadb", version.ref = "r2dbc-mariadb" }
 r2dbc-mysql = { module = "io.asyncer:r2dbc-mysql", version.ref = "r2dbc-mysql" }
+caffine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffine" }
+aedile = { module = "com.sksamuel.aedile:aedile-core", version.ref = "aedile" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

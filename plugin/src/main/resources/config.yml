@@ -35,7 +35,16 @@ storage:
 
   cache:
     # Available cache methods:
-    # Memory (Recommended for single server setups)
-    # Redis (Recommended for multiserver setups)
-    # PluginMessaging
+    # "Memory" (Recommended for single server setups)
+    # "Redis" (Recommended for multiserver setups)
     method: Memory
+    memory:
+      # The max size the cache can reach before it starts removing old entries.
+      # Cache being removed just means that the plugin will have to fetch the data from the database again.
+      # This should be adjusted based on the reliance on the economy & the amount of players active on the server.
+      max-size: 100
+      # The time in minutes after which an entry will be removed from the cache after being accessed or written to.
+      expire-after-access: 120
+      expire-after-write: 120
+    redis:
+      address: "172.18.0.1:6379"

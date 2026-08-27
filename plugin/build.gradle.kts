@@ -35,6 +35,8 @@ dependencies {
     libLoader(libs.bundles.lamp.bukkit)
     libLoader(libs.bundles.exposed)
     libLoader(libs.bundles.r2dbc.drivers)
+    libLoader(libs.caffine)
+    libLoader(libs.aedile)
 }
 
 paperPluginYaml {
