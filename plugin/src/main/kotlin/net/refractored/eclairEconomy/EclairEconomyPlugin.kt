@@ -172,7 +172,7 @@ class EclairEconomyPlugin : SuspendingJavaPlugin() {
         try {
             return loader.load()
         } catch (exception: ConfigurateException) {
-            throw IllegalConfigurationException(exception.message ?: "An unknown error occurred.", file)
+            throw IllegalConfigurationException(exception.rawMessage() ?: "An unknown error occurred.", file)
         }
     }
 
